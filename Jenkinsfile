@@ -1,13 +1,18 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven_3.5.2'
+    }
     stages {
         stage('Build') {
             steps {
-                withMaven {
-                    echo "Building..."
-                    sh "mvn clean verify"
-                    sh 'mvn -B -DskipTests clean package'
-                }
+                echo "Building..."
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh "mvn clean verify"
             }
         }
     }
