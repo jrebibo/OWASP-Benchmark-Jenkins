@@ -4,10 +4,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building..."
-                withMaven {
-                    sh 'mvn -B -DskipTests clean package'
-                    sh "mvn clean verify"
-                }
+                sh 'mvn -B -DskipTests clean package'
+                sh "mvn clean verify"
             }
         }
     }
