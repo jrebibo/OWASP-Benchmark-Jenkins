@@ -1,3 +1,12 @@
+# Maven install
+FROM jenkins/jenkins:lts
+USER root
+RUN apt-get update && apt-get install -y maven
+# drop back to the regular jenkins user - good practice
+USER jenkins
+
+
+
 # This dockerfile builds a container that pulls down and runs the latest version of Benchmark
 FROM ubuntu:latest
 MAINTAINER "Dave Wichers dave.wichers@owasp.org"
@@ -24,4 +33,6 @@ RUN echo bench:bench | chpasswd
 
 RUN chown -R bench /owasp/
 ENV PATH /owasp/benchmark/:$PATH
+
+
 
