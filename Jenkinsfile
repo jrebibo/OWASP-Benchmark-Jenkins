@@ -8,6 +8,7 @@ pipeline {
                 withMaven {
                     sh "mvn clean verify"
                     sh "mvn compile"
+                    // sh "bash runBenchmark.sh" bash script to run the tomcat webservice
                 }
             }
         }
